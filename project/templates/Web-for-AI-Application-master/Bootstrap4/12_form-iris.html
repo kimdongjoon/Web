@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-3"></div>
+		<div class="col-6">
+			<form action="/regression" method="POST">
+				<table class="table table-borderless">
+					<tr>
+						<td>Sepal Length</td>
+						<td><input type="text" id="slen" class="form-control" 
+							placeholder="Sepal Length" name="slen"></td>
+					</tr>
+					<tr>
+						<td>Petal Length</td>
+						<td><input type="text" id="plen" class="form-control" 
+							placeholder="Petal Length" name="plen"></td>
+					</tr>
+					<tr>
+						<td>Petal Width</td>
+						<td><input type="text" id="pwid" class="form-control" 
+							placeholder="Petal Width" name="pwid"></td>
+					</tr>					
+					<tr>
+						<td>품종</td>
+						<td>
+							<select class="form-control" id="species"" name="species">
+                                <option value="0">Setosa</option>
+                                <option value="1" selected>Versicolor</option>
+                                <option value="2">Virginica</option>
+                            </select>
+						</td>
+					</tr>
+					<tr>
+						<td>비고</td>
+						<td><textarea class="form-control" rows="5" id="comment" 
+							name="text">Placeholder 역할</textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align: center;">
+							<button type="submit" class="btn btn-primary">확인</button>&nbsp;&nbsp;&nbsp;
+							<button type="reset" class="btn btn-secondary">취소</button>
+						</td>
+					</tr>
+				</table>		
+			</form>
+		</div>
+		<div class="col-3"></div>
+	</div>
+ 
+</div>
+
+</body>
+</html>

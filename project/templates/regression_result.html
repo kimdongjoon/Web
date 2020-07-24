@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-3"></div>
+		<div class="col-6">
+			
+			<form action="" method="POST"></form>
+				<table class="table">
+					<tr>
+						<td>Sepal Length</td>
+						<td>{{iris.slen}}</td>
+
+					</tr>
+					<tr>
+						<td>Petal Length</td>
+						<td>{{iris.plen}}</td>
+
+					</tr>
+					<tr class = "alert alert-warning">
+						<td><strong>Petal Width</strong></td>
+						<td>{{iris.pwid}}</td>
+
+					</tr>					
+					<tr>
+						<td>품종</td>
+						<td>{{iris.species}}</td>
+					</tr>
+					<tr>
+						<td></td>
+						<!-- <td colspan = "2" style = "text-align: center;">
+							<button class ="btn btn-primary"
+							
+							onclick =   "/regression"></button>
+						</td> -->
+						<td></td>
+					</tr>
+					<tr>
+
+						
+				</table>		
+			</form>
+		</div>
+		<div class="col-3"></div>
+	</div>
+ 
+</div>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
-
+#------------------------------
 
 from flask import Flask, render_template, request
 app = Flask(__name__) 
@@ -45,4 +45,4 @@ def hello(name=None):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
