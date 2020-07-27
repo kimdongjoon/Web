@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block subtitle %}
+    <strong>다중 선형회귀</strong> - <small>Iris Sepal Width는?</small>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-6">
+            <form action="/regression" method="POST">
+                <table class="table table-borderless">
+                    <tr>
+                        <td>Sepal Length</td>
+                        <td><input type="text" id="slen" class="form-control" 
+                            placeholder="Sepal Length" name="slen"></td>
+                    </tr>
+                    <tr>
+                        <td>Petal Length</td>
+                        <td><input type="text" id="plen" class="form-control" 
+                            placeholder="Petal Length" name="plen"></td>
+                    </tr>
+                    <tr>
+                        <td>Petal Width</td>
+                        <td><input type="text" id="pwid" class="form-control" 
+                            placeholder="Petal Width" name="pwid"></td>
+                    </tr>					
+                    <tr>
+                        <td>품종</td>
+                        <td>
+                            <select class="form-control" id="species"" name="species">
+                                <option value="0">Setosa</option>
+                                <option value="1" selected>Versicolor</option>
+                                <option value="2">Virginica</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">확인</button>&nbsp;&nbsp;&nbsp;
+                            <button type="reset" class="btn btn-secondary">취소</button>
+                        </td>
+                    </tr>
+                </table>		
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>                
+{% endblock %}
