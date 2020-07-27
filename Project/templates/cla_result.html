@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block subtitle %}
+    <strong>분류</strong> - <small>이미지</small>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form action="/classification" method="POST">
+                <table class="table table-borderless">
+                    <tr>
+                        <td>이미지</td>
+                        <td>
+                            <img src="{{url_for('static', filename='images/uploads/'+filename)}}"
+                                 width="440" alt="uploaded image">
+                        </td>
+                    </tr>
+                    <tr class="alert alert-warning">
+                        <td><strong>분류 결과</strong></td>
+                        <td><strong>{{name}} ({{pct}}%)</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <button class="btn btn-primary"
+                                    onclick="location.href='/classification'">재실행</button>
+                        </td>
+                    </tr>
+                </table>		
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>                
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block subtitle %}
+    <strong>분류</strong> - <small>이미지</small>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form action="/classification" method="POST" enctype="multipart/form-data">
+                <table class="table table-borderless">
+                    <tr>
+                        <td>이미지</td>
+                        <td>
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" id="image" name="image">
+                                <label class="custom-file-label" for="image">업로드할 파일 선택</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">실행</button>&nbsp;&nbsp;&nbsp;
+                            <button type="reset" class="btn btn-secondary">취소</button>
+                        </td>
+                    </tr>
+                </table>		
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>                
+{% endblock %}
+{% block addition %}
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+{% endblock %}
