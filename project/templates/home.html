@@ -48,18 +48,16 @@
                         <a class="nav-link {% if menu.stmt %} active {% endif %}"
                         href="{% if menu.stmt %} # {% else %} /sentimentation {% endif %}}">감성분석</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link {% if menu.clsf %} active {% endif %}"
                         href="{% if menu.clsf %} # {% else %} /classification {% endif %}}">분류</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if menu.clst %} active {% endif %}"
-                        href="{% if menu.clst %} # {% else %} /clustering {% endif %}}">군집화</a>
-                    </li>
+                    </li> -->
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">멤버</a>
+                        <a class="nav-link dropdown-toggle {% if menu.clsf %} active {% endif %}" data-toggle="dropdown" 
+                        href="{% if menu.clsf %} # {% else %} /classification {% endif %}}">분류</a>
                         <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">김태균</a>
+                        <a class="dropdown-item {% if menu.clsf %} active {% endif %}" href="/classification_iris">아이리스 분류</a>
                         <a class="dropdown-item" href="#">이용규</a>
                         <a class="dropdown-item" href="#">김민우</a>
                         </div>

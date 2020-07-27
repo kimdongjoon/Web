@@ -14,17 +14,21 @@ def regression():
     if request.method == "GET":
         return render_template('regression.html', menu = menu) 
     else:
-        return render_template('regression_result.html', nemu = menu)#, iris=iris) 
+        return render_template('regression_result.html', memu = menu)#, iris=iris) 
 
 @app.route('/sentimentation')
 def sentimentation():
     menu = {'home' : False, 'rgrs' : False , 'stmt' : True , 'clsf' : False , 'clst' : False, 'user':False}
     return render_template('sentimentation.html', menu = menu) 
 
-@app.route('/classification')
-def classification():
-    menu = {'home' : False, 'rgrs' : False , 'stmt' : False , 'clsf' : True , 'clst' : False, 'user':False}
-    return render_template('classification.html', menu = menu) 
+@app.route('/classification_iris' ,methods=['GET','POST'])
+def classification_iris():
+    menu = {'home' : False, 'rgrs' : False , 'stmt' : False , 'clsf' : True , 'clst' : False ,'user':False}
+    if request.method == 'GET':
+        return render_template('classification_iris.html', menu = menu)
+    else :
+        pass
+
 
 @app.route('/clustering')
 def clustering():
