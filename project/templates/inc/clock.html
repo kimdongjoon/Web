@@ -14,7 +14,7 @@
         let sec = today.getSeconds();
 
         today = year + "-" + cvt2(month) + "-" + cvt2(date) + " (" + dow[day] + ") " +
-                cvt2(hour) + ":" + cvt2(min) // + ":" + cvt2(sec);
+                cvt2(hour) + ":" + cvt2(min) //+ ":" + cvt2(sec);
         document.getElementById('clock').innerHTML = today;
         t=setTimeout(function() {
             startTime();

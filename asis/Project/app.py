@@ -45,7 +45,10 @@ def regression():
 
 @app.route('/sentiment')
 def sentiment():
-    pass
+    review = request.form['review']
+    # LR, NB 처리
+    movie = {'review':review, 'result_lr':'긍정','result_bn':'부정'}
+    return render_template('sentiment_result.html', menu = menu, movie = movie)
 
 @app.route('/classification')
 def classification():
