@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block sub_title %}군집화 - <small>PCA and K-means Clustering</small>{% endblock %}
+{% block main %}
+    <div class="row">
+        <div class="col-11">
+            <table class="table">
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <strong>PCA and K-means Clustering 실행 결과</strong>
+                    </td>
+                </tr>
+                <!-- <tr style="background:yellow;"> -->
+                <tr class="alert alert-warning">
+                    <td style="text-align: center;"><strong>군집수(K)</strong></td>
+                    <td style="text-align: center;"><strong>{{K}}</strong></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">PCA</td>
+                    <td style="text-align: center;">K-means Clustering</td>
+                </tr>
+                <tr>
+                    <td><img src="{{url_for('static', filename='images/pca.png', q=mtime)}}" 
+                             width="420" alt="uploaded image"></td>
+                    <td><img src="{{url_for('static', filename='images/kmc.png', q=mtime)}}" 
+                             width="420" alt="uploaded image"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button class="btn btn-primary" 
+                                onclick="location.href='/clustering'">재실행</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-1"></div>
+    </div>
+{% endblock %}

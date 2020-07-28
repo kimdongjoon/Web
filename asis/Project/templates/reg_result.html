@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block subtitle %}
+    <strong>다중 선형회귀</strong> - <small>결과</small>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-6">
+            <table class="table">
+                <tr>
+                    <td>Sepal Length</td>
+                    <td>{{ iris.slen }}</td>
+                </tr>
+                <tr class="alert alert-warning">
+                    <td><strong>Sepal Width</strong></td>
+                    <td><strong>{{ iris.swid }}</strong></td>
+                </tr>
+                <tr>
+                    <td>Petal Length</td>
+                    <td>{{ iris.plen }}</td>
+                </tr>
+                <tr>
+                    <td>Petal Width</td>
+                    <td>{{ iris.pwid }}</td>
+                </tr>					
+                <tr>
+                    <td>품종</td>
+                    <td>{{ iris.species }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button class="btn btn-primary"
+                                onclick="location.href='/regression'">재실행</button>
+                    </td>
+                </tr>
+            </table>		
+        </div>
+        <div class="col-4"></div>
+    </div>                
+{% endblock %}

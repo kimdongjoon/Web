@@ -1,39 +1,90 @@
-{% extends 'home.html' %}
-{% block subtitle %} 인공지능 어플리케이션 {% endblock %}
-{% block content %}
-
-<div id="demo" class="carousel slide" data-ride="carousel">
-
-  <!-- Indicators -->
-    <ul class="carousel-indicators">
-      <li data-target="#demo" data-slide-to="0" class="active"></li>
-      <li data-target="#demo" data-slide-to="1"></li>
-      <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-  
-    <!-- The slideshow -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{url_for('static', filename = 'images/AI.png')}}" alt="AI" width="1100" height="500" class ="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="{{url_for('static', filename = 'images/Machine Learning.png')}}" alt="Machine Learning" width="1100" height="500" class ="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="{{url_for('static', filename = 'images/Deep Learning.png')}}" alt="Deep Learning" width="1100" height="500" class ="d-block w-100">
-      </div>
-      
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web for AI App</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/mystyle.css')}}"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+    <script src="{{url_for('static', filename='js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <img src="{{url_for('static', filename='images/logo.png')}}" 
+                 style="height:50px; margin-left:50px; margin-right:100px;"
+                 class="d-inline-block align-top" alt="">
+            <ul class="nav nav-pills mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if menu.home %}active{% endif %}" href="/">
+                        <i class="fa fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+                </li>
+            </ul>
+            <div class="navbar-text" id="clock">
+                시계 영역
+            </div>
+        </nav>
     </div>
-    
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
-  </div>
-  <div class="text-center" style ="margin-top: 50px">
-    <strong>다양한 인공지능 어플리케이션을 경험해 보세요.</strong>
-  </div>
-{% endblock %}
+    <div class="container">
+        <div class="row" style="margin-top: 20px">
+            <div class="col-2">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item"><a class="nav-link {% if menu.regression %}active{% endif %}" 
+                        href="{% if menu.regression %}#{% else %}/regression{% endif %}">회귀</a></li>
+                    <li class="nav-item"><a class="nav-link {% if menu.senti %}active{% endif %}" 
+                        href="{% if menu.senti %}#{% else %}/senti{% endif %}">감성분석</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link {% if menu.classification %}active{% endif %}" 
+                        href="{% if menu.classification %}#{% else %}/classification{% endif %}">분류</a></li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if menu.classification %}active{% endif %}" href="#" 
+                           id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            분류
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/iris_classification">아이리스 분류</a>
+                            <a class="dropdown-item" href="/classification">이미지 분류</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link {% if menu.clustering %}active{% endif %}" 
+                        href="{% if menu.clustering %}#{% else %}/clustering{% endif %}">군집화</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" 
+                           id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            팀 멤버
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">김민우</a>
+                            <a class="dropdown-item" href="#">김태균</a>
+                            <a class="dropdown-item" href="#">서폴드</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-10">
+                <h3>{% block sub_title %}서브 타이틀{% endblock %}</h3>
+                <hr>
+                {% block main %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center fixed-bottom">
+            <span class="navbar-text">
+                Copyright &copy; 2020 C.K.Kim
+            </span>
+        </nav>
+    </div>
+    {% block addition %}
+    {% endblock %}
+    {% include 'inc/clock.html' %}
+</body>
+</html>
