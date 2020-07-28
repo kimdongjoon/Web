@@ -1,0 +1,29 @@
+<script>
+    document.getElementById('clock').onload = startTime();
+
+    function startTime()
+    {
+        let dow = ['일', '월', '화', '수', '목', '금', '토']
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let date = today.getDate();
+        let day = today.getDay();   // 요일
+        let hour = today.getHours();
+        let min = today.getMinutes();
+        let sec = today.getSeconds();
+
+        today = year + "-" + cvt2(month) + "-" + cvt2(date) + " (" + dow[day] + ") " +
+                cvt2(hour) + ":" + cvt2(min) // + ":" + cvt2(sec);
+        document.getElementById('clock').innerHTML = today;
+        t=setTimeout(function() {
+            startTime();
+        }, 1000*60);
+    }
+    function cvt2(i)
+    {
+        if (i<10)
+            i = "0" + i;
+        return i;
+    }
+</script>

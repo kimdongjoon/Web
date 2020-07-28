@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block sub_title %}분류 - <small>아이리스 품종은?</small>{% endblock %}
+{% block main %}
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-6">
+            <form action="/iris_classification" method="POST">
+                <table class="table table-borderless">
+                    <tr>
+                        <td>Sepal Length</td>
+                        <td><input type="text" class="form-control" id="slen" name="slen"></td>
+                    </tr>
+                    <tr>
+                        <td>Sepal Width</td>
+                        <td><input type="text" class="form-control" id="swid" name="swid"></td>
+                    </tr>
+                    <tr>
+                        <td>Petal Length</td>
+                        <td><input type="text" class="form-control" id="plen" name="plen"></td>
+                    </tr>
+                    <tr>
+                        <td>Petal Width</td>
+                        <td><input type="text" class="form-control" id="pwid" name="pwid"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">실행</button>&nbsp;&nbsp;
+                            <button type="reset" class="btn btn-secondary">취소</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+{% endblock %}
