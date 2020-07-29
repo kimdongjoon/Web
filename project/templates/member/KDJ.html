@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% block sub_title %}{% endblock %}
+{% block main %}
+<div class="col-10">
+    <h3>
+<strong>김동준</strong> - <small>Be your self. No matter what they say.</small>
+</h3>
+    <hr>
+    
+<div class="row">
+<div class="col-4">
+<!-- 사진 영역 -->
+<img src="/static/images/member/KDJ/KDJ.jpg" width="220px">
+</div>
+<div class="col-8">
+
+<!-- content -->
+-학이시습지 불열역호-<br>
+<br>
+새로운 경험에 대한 호기심이 많습니다. <br>
+컴퓨터 공학과를 졸업하고 대학원 재학중에 있습니다.<br>
+
+다양한 사업군에 대한 개발 프로젝트 경험과<br>
+- Si , 영상처리 <small>(제조 생산 / 병원 / 선박 / 이미지 추적)</small><br>
+
+엔지니어링 경험을 가지고 있습니다. <br>
+- 계측 제어 , 설계 , 특수용접 <small>(수력 / 원자력 / 화학 플랜트)</small><br>
+
+
+<!-- 컴퓨터 공학과를 졸업하고 개발👩‍💻에 관심이 많습니다!<br>
+스케이트보드🛹와 자전거🚲 타는 것을 좋아하고<br>
+도넛을 굉장히 좋아해 한 달에 한번 신메뉴가 나오면 꼭 먹는 &lt;🍩도넛 모임🍩&gt;을<br>
+하고 있습니다.<br><br> -->
+
+<!-- <button type="button" class="btn btn-success" onclick="location.href='KimSohyunQuiz.html'">Quiz</button> -->
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-success" data-toggle="modal"
+data-target="#myModal">Quiz</button>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Quiz</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form>
+                <h4>Q1. 가장 좋아하는 영화는? </h4>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" value="Q1_a1"
+                            name="optradio1">인턴&nbsp;
+                        <input type="radio" class="form-check-input" value="Q1_a2"
+                            name="optradio1">굿윌헌팅&nbsp;
+                        <input type="radio" class="form-check-input" value="Q1_a3"
+                            name="optradio1">AI&nbsp;
+                        <input type="radio" class="form-check-input" value="Q1_a4"
+                            name="optradio1">세렌디피티
+                    </label>
+                </div>
+                <br><br><br>
+                <h4>Q2. 즐겨하는 취미는 ? </h4>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" value="Q2_a1"
+                            name="optradio2">여행가기&nbsp;
+                        <input type="radio" class="form-check-input" value="Q2_a2"
+                            name="optradio2">책보기&nbsp;
+                        <input type="radio" class="form-check-input" value="Q2_a3"
+                            name="optradio2">쇼핑하기&nbsp;
+                        <input type="radio" class="form-check-input" value="Q2_a4"
+                            name="optradio2">노래하기
+                    </label>
+                </div>
+                <br><br><br>
+                <h4>Q3. 가장 좋아하는 색깔은? </h4>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" value="Q3_a1"
+                            name="optradio3">빨강&nbsp;
+                        <input type="radio" class="form-check-input" value="Q3_a2"
+                            name="optradio3">노랑&nbsp;
+                        <input type="radio" class="form-check-input" value="Q3_a3"
+                            name="optradio3">초록&nbsp;
+                        <input type="radio" class="form-check-input" value="Q3_a4"
+                            name="optradio3">파랑
+                    </label>
+                </div>
+            </form>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal" onclick="myFucntion()">정답확인</button>
+            <script>
+                function myFucntion() {
+                    var CorrectCount = 0;
+                    var mySel1 = document.getElementsByName("optradio1");
+                    for (var i = 0; i < mySel1.length; i++) {
+                        if (mySel1[1].checked == true) {
+                            CorrectCount++;
+                        }
+                    }
+                    var mySel2 = document.getElementsByName("optradio2");
+                    for (var i = 0; i < mySel2.length; i++) {
+                        if (mySel2[3].checked == true) {
+                            CorrectCount++;
+                        }
+                    }
+                    var mySel3 = document.getElementsByName("optradio3");
+                    for (var i = 0; i < mySel3.length; i++) {
+                        if (mySel3[3].checked == true) {
+                            CorrectCount++;
+                        }
+                    }
+                    if (CorrectCount == 12) {
+                        alert("정답입니다!!");
+                    } else {
+                        alert("오답입니다!!");
+                    }
+                }
+            </script>
+            
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="col-1">
+<!-- etc -->
+</div>
+</div>
+
+<br>
+<h3>✉️ Contact Me</h3>
+<p style="font-size: 20px;">&nbsp;&nbsp;&nbsp;이메일 : k.dongjoon.kr@gmail.com
+<br>&nbsp;&nbsp;&nbsp;github : https://github.com/kimdongjoon <a href="https://github.com/kimdongjoon"><img
+src="/static/images/member/KDJ/GitHub-Mark-16px.png"></a></p>
+
+
+<!--carousel 영역------------------------------------------------------------------------------------------>
+<div id="demo" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+        <li data-target="#demo" data-slide-to="3"></li>
+    </ol>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{url_for('static', filename='images/member/KDJ/travel-1.jpg', q=1234)}}" alt="1" class="d-block w-100">
+        </div>
+        
+        <div class="carousel-item ">
+            <img src="{{url_for('static', filename='images/member/KDJ/travel-2.jpg', q=1234)}}" alt="2" class="d-block w-100">
+        </div>
+
+        <div class="carousel-item ">
+            <img src="{{url_for('static', filename='images/member/KDJ/travel-3.jpg', q=1234)}}" alt="3" class="d-block w-100">
+        </div>
+
+        <div class="carousel-item ">
+            <img src="{{url_for('static', filename='images/member/KDJ/travel-4.jpg', q=1234)}}" alt="4" class="d-block w-100">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+<div class="text-center" style="margin-top: 50px">
+    <strong></strong>
+</div>
+<!--carousel 영역------------------------------------------------------------------------------------------>
+<h5><i class="fas fa-school"></i> 학력 사항</h5>
+<table class="table">
+<thead>
+<tr>
+<th>학교</th>
+<th>전공</th>
+<th>기간</th>
+<th>졸업여부</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>울산대학교</td>
+<td>컴퓨터정보통신공학</td>
+<td>2012.03 ~ 2014.02</td>
+<td>졸업</td>
+</tr>
+
+
+
+<tr>
+<td>충남대학교</td>
+<td>전자전파통신공학</td>
+<td>2019.03 ~ </td>
+<td>재학중</td>
+</tr>
+
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+</tbody>
+</table>               
+
+</div>
+</div>
+</div>  
+{% endblock %}

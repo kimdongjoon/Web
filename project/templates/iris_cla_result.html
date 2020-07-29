@@ -4,6 +4,45 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-6">
+
+
+<!--carousel 영역------------------------------------------------------------------------------------------>
+<div id="demo" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+        <li data-target="#demo" data-slide-to="3"></li>
+    </ol>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner" >
+        <!-- 속도 조절  <div class="carousel-item active" data-interval = "50"> -->
+        
+        
+        <div class="carousel-item {% if iris.species_bool.Setosa %}active data-interval = 50 {% endif %}">
+            <img src="{{url_for('static', filename='images/iris_setosa.png', q=1234)}}" alt="iris_setosa" class="d-block w-100" height = "300px" width = "400">
+        </div>
+
+        <div class="carousel-item {% if iris.species_bool.Versicolor %}active data-interval = 500 {% endif %}">
+            <img src="{{url_for('static', filename='images/iris_versicolor.png', q=1234)}}" alt="iris_versicolor" class="d-block w-100" height = "300px" width = "400">
+        </div>
+
+        <div class="carousel-item {% if iris.species_bool.Virginica %}active data-interval = 500 {% endif %}">
+            <img src="{{url_for('static', filename='images/iris_virginica.png', q=1234)}}" alt="iris_virginica" class="d-block w-100" height = "300px" width = "400">
+        </div>
+    
+
+    <!-- Left and right controls -->
+    
+</div>
+<div class="text-center" style="margin-top: 50px">
+    <strong></strong>
+</div>
+<!--carousel 영역------------------------------------------------------------------------------------------>
+
+
             <table class="table">
                 <tr>
                     <td>Sepal Length</td><td>{{iris.slen}}</td>
@@ -17,6 +56,9 @@
                 <tr>
                     <td>Petal Width</td><td>{{iris.pwid}}</td>
                 </tr>
+
+
+
                 <tr class="alert alert-warning">
                     <td><strong>Logistic Regression</strong></td>
                     <td><strong>{{iris.species_lr}}</strong></td>
@@ -33,13 +75,26 @@
                     <td><strong>Deep Learning</strong></td>
                     <td><strong>{{iris.species_deep}}</strong></td>
                 </tr>
+                <tr class="alert alert-warning">
+                    <td><strong>Vote</strong></td>
+                    <td><strong>{{iris.species_vote}}</strong></td>
+                </tr>
+
                 <tr>
                     <td colspan="2" style="text-align: center;">
                         <button class="btn btn-primary" onclick="location.href='/iris_classification'">재실행</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
                     </td>
                 </tr>
             </table>
         </div>
         <div class="col-4"></div>
     </div>
+    <tr></tr>
+
 {% endblock %}

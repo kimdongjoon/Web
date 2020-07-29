@@ -15,7 +15,7 @@
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <img src="{{url_for('static', filename='images/logo.png')}}" 
+            <img src="{{url_for('static', filename='images/logo1.png')}}" 
                  style="height:50px; margin-left:50px; margin-right:100px;"
                  class="d-inline-block align-top" alt="">
             <ul class="nav nav-pills mr-auto">
@@ -55,15 +55,19 @@
                     </li>
                     <li class="nav-item"><a class="nav-link {% if menu.clustering %}active{% endif %}" 
                         href="{% if menu.clustering %}#{% else %}/clustering{% endif %}">군집화</a></li>
+
+                    <li class="nav-item"><a class="nav-link {% if menu.creative %}active{% endif %}" 
+                        href="{% if menu.creative %}#{% else %}/creative{% endif %}">창작 Application</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" 
+                        <a class="nav-link dropdown-toggle {% if menu.member %}active{% endif %}" href="#" 
                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             팀 멤버
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">김민우</a>
-                            <a class="dropdown-item" href="#">김태균</a>
-                            <a class="dropdown-item" href="#">서폴드</a>
+                            <!--<a class="dropdown-item" href="/member/관리자?nickname=최강 동안미모" >관리자</a>-->
+                            <a class="dropdown-item" href="/member/KDJ">김동준</a>
+                            <a class="dropdown-item" href="/member/KTH">김태희</a>
+                            
                         </div>
                     </li>
                 </ul>
@@ -79,7 +83,8 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center fixed-bottom">
             <span class="navbar-text">
-                Copyright &copy; 2020 C.K.Kim
+                Copyright &copy; 2020 Coding 
+                <img src="/static/images/icon.png" width = "20px"></a>
             </span>
         </nav>
     </div>

@@ -1,7 +1,51 @@
 {% extends "base.html" %}
 {% block sub_title %}분류 - <small>아이리스 품종은?</small>{% endblock %}
 {% block main %}
-    <div class="row">
+    
+<!--carousel 영역------------------------------------------------------------------------------------------>
+<div id="demo" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+        <li data-target="#demo" data-slide-to="3"></li>
+    </ol>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <!-- 속도 조절  <div class="carousel-item active" data-interval = "50"> -->
+        <div class="carousel-item active">
+            <img src="{{url_for('static', filename='images/iris.png', q=1234)}}" alt="iris" class="d-block w-100" height = "300px" width = "400">
+        </div>
+        
+        <div class="carousel-item ">
+            <img src="{{url_for('static', filename='images/iris_setosa.png', q=1234)}}" alt="iris_setosa" class="d-block w-100" height = "300px" width = "400">
+        </div>
+
+        <div class="carousel-item ">
+            <img src="{{url_for('static', filename='images/iris_versicolor.png', q=1234)}}" alt="iris_versicolor" class="d-block w-100" height = "300px" width = "400">
+        </div>
+
+        <div class="carousel-item ">
+            <img src="{{url_for('static', filename='images/iris_virginica.png', q=1234)}}" alt="iris_virginica" class="d-block w-100" height = "300px" width = "400">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+<div class="text-center" style="margin-top: 50px">
+    <strong></strong>
+</div>
+<!--carousel 영역------------------------------------------------------------------------------------------>
+
+<div class="row">
         <div class="col-2"></div>
         <div class="col-6">
             <form action="/iris_classification" method="POST">

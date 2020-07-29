@@ -66,12 +66,12 @@ def load_iris():
 
 @app.route('/')
 def index():
-    menu = {'home':True, 'regression':False, 'senti':False, 'classification':False, 'clustering':False}
+    menu = {'home':True, 'regression':False, 'senti':False, 'classification':False, 'clustering':False, 'member':False, 'creative' : False}
     return render_template('home.html', menu=menu)
 
 @app.route('/regression', methods=['GET', 'POST'])
 def regression():
-    menu = {'home':False, 'regression':True, 'senti':False, 'classification':False, 'clustering':False}
+    menu = {'home':False, 'regression':True, 'senti':False, 'classification':False, 'clustering':False, 'member':False, 'creative' : False}
     if request.method == 'GET':
         return render_template('regression.html', menu=menu)
     else:
@@ -88,7 +88,7 @@ def regression():
 
 @app.route('/senti', methods=['GET', 'POST'])
 def senti():
-    menu = {'home':False, 'regression':False, 'senti':True, 'classification':False, 'clustering':False}
+    menu = {'home':False, 'regression':False, 'senti':True, 'classification':False, 'clustering':False, 'member':False, 'creative' : False}
     if request.method == 'GET':
         return render_template('senti.html', menu=menu)
     else:
@@ -104,29 +104,49 @@ def senti():
 
 @app.route('/iris_classification', methods=['GET', 'POST'])
 def iris_classification():
-    menu = {'home':False, 'regression':False, 'senti':False, 'classification':True, 'clustering':False}
+    menu = {'home':False, 'regression':False, 'senti':False, 'classification':True, 'clustering':False, 'member':False, 'creative' : False}
     if request.method == 'GET':
         return render_template('iris_classification.html', menu=menu)
     else:
         sp_names = ['Setosa', 'Versicolor', 'Virginica']
+        sp_count = [0,0,0]
+
         slen = float(request.form['slen'])      # Sepal Length
         swid = float(request.form['swid'])      # Sepal Width
         plen = float(request.form['plen'])      # Petal Length
         pwid = float(request.form['pwid'])      # Petal Width
         iris_test = np.array([slen, swid, plen, pwid]).reshape(1, 4)
         sp = np.argmax(model_iris_deep.predict(iris_test))
+
+        # Voting 추가.
+        # 앙상블 기법을 적용하는게 아닌 각각의 결과에 대한 가중치를 부여한다. 
+        # deep = 1.9      lr = 1      svm = 1.5     dt = 1
+        # 도합 5를 기준으로 가장 높은 값을 선택하여 최종결과로 리턴한다. 
+        
+        sp_count[sp] += 1.9
+        sp_count[model_iris_lr.predict(iris_test)[0]] += 1
+        sp_count[model_iris_svm.predict(iris_test)[0]] += 1.5
+        sp_count[model_iris_dt.predict(iris_test)[0]] += 1
+
         species_deep = sp_names[sp]
         species_lr = sp_names[model_iris_lr.predict(iris_test)[0]]
         species_svm = sp_names[model_iris_svm.predict(iris_test)[0]]
         species_dt = sp_names[model_iris_dt.predict(iris_test)[0]]
+
+        vote_index = np.argmax(sp_count)
+        species_vote = sp_names[vote_index]
+        species_bool = {'Setosa':False, 'Versicolor':False, 'Virginica':False}
+        species_bool[species_vote] = True
+
+
         iris = {'slen':slen, 'swid':swid, 'plen':plen, 'pwid':pwid, 
                 'species_deep':species_deep, 'species_lr':species_lr,
-                'species_svm':species_svm, 'species_dt':species_dt}
+                'species_svm':species_svm, 'species_dt':species_dt, 'species_vote' : species_vote , 'vote_index' : vote_index, 'species_bool':species_bool}
         return render_template('iris_cla_result.html', menu=menu, iris=iris)
 
 @app.route('/classification', methods=['GET', 'POST'])
 def classification():
-    menu = {'home':False, 'regression':False, 'senti':False, 'classification':True, 'clustering':False}
+    menu = {'home':False, 'regression':False, 'senti':False, 'classification':True, 'clustering':False, 'member':False, 'creative' : False}
     if request.method == 'GET':
         return render_template('classification.html', menu=menu)
     else:
@@ -144,7 +164,7 @@ def classification():
 
 @app.route('/clustering', methods=['GET', 'POST'])
 def clustering():
-    menu = {'home':False, 'regression':False, 'senti':False, 'classification':False, 'clustering':True}
+    menu = {'home':False, 'regression':False, 'senti':False, 'classification':False, 'clustering':True, 'member':False, 'creative' : False}
     if request.method == 'GET':
         return render_template('clustering.html', menu=menu)
     else:
@@ -159,6 +179,37 @@ def clustering():
         return render_template('clu_result.html', menu=menu,  
                                 K=ncls, mtime=mtime)
 
+
+@app.route('/member/KDJ', methods = ['GET','POST'])
+def KDJ():
+    menu = {'home':False, 'regression':False, 'senti':False, 'classification':False, 'clustering':False, 'member':True, 'creative' : False}
+    if request.method == 'GET':
+        return render_template('/member/KDJ.html', menu=menu)
+    else:
+        pass
+
+
+@app.route('/member/KTH', methods = ['GET','POST'])
+def KTH():
+    menu = {'home':False, 'regression':False, 'senti':False, 'classification':False, 'clustering':False, 'member':True, 'creative' : False}
+    if request.method == 'GET':
+        return render_template('/member/KTH.html', menu=menu)
+    else:
+        pass
+
+@app.route('/creative', methods = ['GET','POST'])
+def creative():
+    menu = {'home':False, 'regression':False, 'senti':False, 'classification':False, 'clustering':False, 'member':False, 'creative' : True}
+    if request.method == 'GET':
+        return render_template('/creative.html', menu=menu)
+    else:
+        pass
+
+@app.route('/shutdown', methods = ['GET','POST'])
+
+
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('page_not_found.html'), 404
@@ -168,4 +219,19 @@ if __name__ == '__main__':
     load_nb()
     load_vgg()
     load_iris()
-    app.run()
+    #app.run()
+    app.run(host='192.168.0.135')     #외부에서 접속시 
+
+### 테스트
+# @app.route('/')
+# def index():
+#     menu = {'home':True, 'regression':False, 'senti':False, 'classification':False, 'clustering':False}
+#     return render_template('home.html', menu=menu)
+
+
+# @app.errorhandler(404)
+# def page_not_found(error):
+#     return render_template('page_not_found.html'), 404
+
+# if __name__ == '__main__':
+#     app.run()
