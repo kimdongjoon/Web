@@ -17,6 +17,10 @@ _mailinglist
 docs/_build/
 .vscode
 uploads/
+Project_EmotionClassification-master
+lovelybot-emotion-master
+BotFramework-Emulator-master
+
 
 # Coverage reports
 htmlcov/

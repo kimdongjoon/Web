@@ -219,8 +219,8 @@ if __name__ == '__main__':
     load_nb()
     load_vgg()
     load_iris()
-    #app.run()
-    app.run(host='192.168.0.135')     #외부에서 접속시 
+    app.run()
+    #app.run(host='0.0.0.0')     #외부에서 접속시 
 
 ### 테스트
 # @app.route('/')
