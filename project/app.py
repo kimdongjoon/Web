@@ -16,6 +16,7 @@ app.debug=True
 
 stopwords=['의','가','이','은','들','는','좀','잘','걍','과','도','를','으로','자','에','와','한','하다']
 okt = Okt()
+tfidf_news = None
 tfidf_vector = None
 model_lr = None
 dtmvector = None
@@ -25,6 +26,12 @@ model_iris_deep = None
 model_iris_lr = None
 model_iris_svm = None
 model_iris_dt = None
+model_news = None
+
+def load_news():
+    global model_news
+    model_news = joblib.load(os.path.join(app.root_path, 'model/news.pkl'))
+
 
 def load_lr():
     global tfidf_vector, model_lr
@@ -203,7 +210,32 @@ def creative():
     if request.method == 'GET':
         return render_template('/creative.html', menu=menu)
     else:
-        pass
+        from sklearn.feature_extraction.text import CountVectorizer
+        from sklearn.naive_bayes import MultinomialNB  # 다항분포 나이브 베이즈 모델
+        from sklearn.metrics import accuracy_score     # 정확도 계산
+        from sklearn.datasets import fetch_20newsgroups
+        newsdata=fetch_20newsgroups(subset='train')  # 'train', 'test', 'all'
+        tname = newsdata.target_names
+        dtmvector = CountVectorizer()
+        X_train_dtm = dtmvector.fit_transform(newsdata.data)
+        X_train_dtm.shape
+
+        model = MultinomialNB()
+        model.fit(X_train_dtm, newsdata.target)
+
+
+        newsdata_test = fetch_20newsgroups(subset='test', shuffle=True) # 테스트 데이터 갖고오기
+        X_test_dtm = dtmvector.transform(newsdata_test.data)
+        X_test_dtm = dtmvector.transform(newsdata_test.data)
+
+        predicted = model.predict(X_test_dtm) #테스트 데이터에 대한 예측
+        # # print("정확도: %.4f" % accuracy_score(newsdata_test.target, predicted)) #예측값과 실제값 비교
+        _accuracy_score = accuracy_score(newsdata_test.target, predicted)
+
+
+
+
+        return render_template('/cre_result.html', menu=menu ,accuracy_score = _accuracy_score, tname = tname)
 
 @app.route('/shutdown', methods = ['GET','POST'])
 
@@ -219,7 +251,11 @@ if __name__ == '__main__':
     load_nb()
     load_vgg()
     load_iris()
+
+    load_news()
+
     app.run()
+    
     #app.run(host='0.0.0.0')     #외부에서 접속시 
 
 ### 테스트

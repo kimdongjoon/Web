@@ -1,24 +1,38 @@
 {% extends "base.html" %}
-{% block sub_title %}감성 분석 - <small>네이버 영화평 긍정/부정 평가?</small>{% endblock %}
+{% block sub_title %}분류 - <small>로이터 뉴스그룹 분류</small>{% endblock %}
 {% block main %}
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-8">
-            <form action="/senti" method="POST">
-                <table class="table table-borderless">
-                    <tr>
-                        <td>영화 감상평</td>
-                        <td><textarea class="form-control" rows="5" name="review"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: center;">
-                            <button type="submit" class="btn btn-primary">실행</button>&nbsp;&nbsp;
-                            <button type="reset" class="btn btn-secondary">취소</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <div class="col-3"></div>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <form action="/creative" method="POST" enctype="multipart/form-data">
+            <table class="table table-borderless">
+                <tr>
+                    <td>뉴스그룹</td>
+                    <td>
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="image" name="image">
+                            <label class="custom-file-label" for="image">업로드할 파일 선택</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="submit" class="btn btn-primary">실행</button>&nbsp;&nbsp;
+                        <button type="reset" class="btn btn-secondary">취소</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
+    <div class="col-2"></div>
+</div>
+{% endblock %}
+{% block addition %}
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
 {% endblock %}
